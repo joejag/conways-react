@@ -1,5 +1,8 @@
 var _ = require('lodash')
 
+const jsArrayFromCoercedString = (key) => [parseInt(key.split(',')[0]), parseInt(key.split(',')[1])]
+const arrayAwareIncludes = (arr, item) => arr.some((candidate) => _.isEqual(candidate, item))
+
 export const neighboursOf = (x, y) =>
     [[x - 1, y + 1], [x, y + 1], [x + 1, y + 1],
     [x - 1, y], /*  [x, y]*/[x + 1, y],
@@ -13,21 +16,14 @@ export const survives = (numOfNeighbours, alive) => {
 
 export const findPotentialSitesForNextGeneration = (world) => {
     const allNeigboursOfLiveCells = world.map((cell) => neighboursOf(cell[0], cell[1]))
-
-    var potentialCells = new Map()
-    _.flatten(allNeigboursOfLiveCells).forEach((cell) => {
-        var count = 1
-        console.log(potentialCells.has(cell))
-        if(potentialCells.has(cell)) {
-            console.log('wasdsads')
-            count = potentialCells.get(cell) + 1
-        }
-        potentialCells.set(cell, count)
+    const frequenciesObject = _.countBy(_.flatten(allNeigboursOfLiveCells))
+    return _.map(frequenciesObject, (val, key) => {
+        return [jsArrayFromCoercedString(key), val]
     })
-
-    return potentialCells 
 }
 
 export const evolve = (world) => {
-    return []
+    return findPotentialSitesForNextGeneration(world)
+              .filter((cell) => survives(cell[1], arrayAwareIncludes(world, cell[0])))
+              .map((cell) => cell[0])
 }
