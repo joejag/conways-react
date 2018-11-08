@@ -5,12 +5,16 @@ import { Provider } from 'react-redux'
 
 import './index.css'
 import App from './components/App'
-import solataire from './reducers/reducers'
+import conwaysReducers from './reducers/reducers'
+import { addLiveCell } from './actions/actions'
 
-const store = createStore(solataire, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(conwaysReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 ReactDOM.render(
     <Provider store={store}>
         <App />
     </Provider>,
     document.getElementById('root'))
+
+store.dispatch(addLiveCell(0,0))
+store.dispatch(addLiveCell(1,1))

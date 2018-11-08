@@ -1,12 +1,14 @@
-const solataire = (state = {deck: []}, action) => {
+const initialState = {
+    liveCells: []
+}
+
+const conwaysReducers = (state = initialState, action) => {
     switch (action.type) {
-        case 'ADD_CARD':
-            return {...state, deck: [...state.deck, action.card] }
-        case 'ADD_A_FRESH_DECK':
-            return {...state, deck: action.cards }
+        case 'ADD_LIVE_CELL':
+            return { ...state, liveCells: [...state.liveCells, action.cords] }
         default:
             return state
     }
 }
 
-export default solataire
+export default conwaysReducers
