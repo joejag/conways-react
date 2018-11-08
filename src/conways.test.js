@@ -31,18 +31,25 @@ describe('survival', () => {
 
 test('find Potential Sites For Next Generation', () => {
     var world = [[1, 1], [1, 2]]
-    expect(findPotentialSitesForNextGeneration(world)).toEqual(
-        new Map([
-            [[0, 2], 1], [[1, 2], 1], [[2, 2], 1], [[0, 1], 1],
-            [[2, 1], 1], [[0, 0], 1], [[1, 0], 1], [[2, 0], 1],
-            [[0, 3], 1], [[1, 3], 1], [[2, 3], 1], [[0, 2], 1],
-            [[2, 2], 1], [[0, 1], 1], [[1, 1], 1], [[2, 1], 1]
-        ])
+    expect(findPotentialSitesForNextGeneration(world).sort()).toEqual([
+        [[0, 0], 1],
+        [[0, 1], 2],
+        [[0, 2], 2],
+        [[0, 3], 1],
+        [[1, 0], 1],
+        [[1, 1], 1],
+        [[1, 2], 1],
+        [[1, 3], 1],
+        [[2, 0], 1],
+        [[2, 1], 2],
+        [[2, 2], 2],
+        [[2, 3], 1]]
     )
 })
 
 describe('evolution', () => {
     test('blinker', () => {
-        // expect(evolve([[0, 1], [1, 1], [2, 1]])).toEqual([[1, 0], [1, 1], [1, 2]])
+        expect(evolve([[0, 1], [1, 1], [2, 1]]).sort()).toEqual(
+            [[1, 0], [1, 1], [1, 2]])
     })
 })
