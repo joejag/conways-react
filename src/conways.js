@@ -15,8 +15,8 @@ export const survives = (numOfNeighbours, alive) => {
 }
 
 export const findPotentialSitesForNextGeneration = (world) => {
-    const allNeigboursOfLiveCells = world.map((cell) => neighboursOf(cell[0], cell[1]))
-    const frequenciesObject = _.countBy(_.flatten(allNeigboursOfLiveCells))
+    const allNeigboursOfLiveCells = _.flatMap(world, (cell) => neighboursOf(cell[0], cell[1]))
+    const frequenciesObject = _.countBy(allNeigboursOfLiveCells)
     return _.map(frequenciesObject, (val, key) => {
         return [jsArrayFromCoercedString(key), val]
     })
