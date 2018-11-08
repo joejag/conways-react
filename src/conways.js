@@ -1,4 +1,4 @@
-var _ = require('lodash')
+import _ from 'lodash'
 
 const jsArrayFromCoercedString = (key) => [parseInt(key.split(',')[0]), parseInt(key.split(',')[1])]
 const arrayAwareIncludes = (arr, item) => arr.some((candidate) => _.isEqual(candidate, item))
