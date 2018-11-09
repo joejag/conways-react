@@ -1,0 +1,8 @@
+{
+    "extends": [ "standard", "plugin:react/recommended", "plugin:jest/recommended" ],
+    "settings": {
+        "react": {
+          "version": "15.0"
+        }
+    }
+}

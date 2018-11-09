@@ -9,12 +9,12 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({})
 
-const App = ({world}) => 
-    <div className="App">
-      <header className="App-header">
-        Conway's Game of Life
-      </header>
-    </div>
+const App = ({ world }) =>
+  <div className="App">
+    <header className="App-header">
+      { world }
+    </header>
+  </div>
 
 export default connect(
   mapStateToProps,
