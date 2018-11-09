@@ -1,23 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { connect } from 'react-redux'
 
-const App = () =>
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-          </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-          </a>
-    </header>
-  </div>
+import './App.css'
 
-export default App;
+const mapStateToProps = state => ({
+  world: state.liveCells
+})
+
+const mapDispatchToProps = dispatch => ({})
+
+const App = ({world}) => 
+    <div className="App">
+      <header className="App-header">
+        Conway's Game of Life
+      </header>
+    </div>
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
