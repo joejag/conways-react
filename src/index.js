@@ -4,21 +4,18 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 import './index.css'
-import App from './components/App'
+import Grid from './components/Grid'
 import conwaysReducers from './state/reducers'
-import { addLiveCell, evolveWorld } from './state/actions'
+// import { evolveWorld } from './state/actions'
 
 const store = createStore(conwaysReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Grid width={20} height={20} />
   </Provider>,
   document.getElementById('root'))
 
-store.dispatch(addLiveCell(0, 1))
-store.dispatch(addLiveCell(1, 1))
-store.dispatch(addLiveCell(2, 1))
-store.dispatch(evolveWorld())
-store.dispatch(evolveWorld())
-store.dispatch(evolveWorld())
+// setInterval(() => {
+//   store.dispatch(evolveWorld())
+// }, 3000)

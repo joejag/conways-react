@@ -1,0 +1,16 @@
+.Cell { 
+	border: 1px solid lightgray;
+	border-spacing: 0;
+	height: 25px;
+	width: 25px;
+    margin: 0; 
+    padding: 0;
+}
+
+.Cell-alive {
+    background-color: red;
+}
+  
+.Cell-dead {
+    background-color: black;
+}

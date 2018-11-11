@@ -1,8 +1,8 @@
-.App {
+.Grid {
   text-align: center;
 }
 
-.App-header {
+.Grid-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -13,6 +13,8 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.Grid-table {
+  margin: 0; 
+  padding: 0;
+	border-collapse: collapse;
 }
